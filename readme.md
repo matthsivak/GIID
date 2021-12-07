@@ -23,6 +23,6 @@ Edit src/config.ts. Change token and path to dist directory.
 
 ---
 
-### Run Bot
+### Run the Bot
 
 `npm run start`
