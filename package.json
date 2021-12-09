@@ -1,31 +1,38 @@
 {
-  "name": "giid",
-  "version": "0.0.1",
-  "description": "A powerfull discord bot.",
-  "main": "dist/index.js",
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "build": "tsc",
-    "build:dev": "tsc --watch",
-    "start:dev": "nodemon --watch src --watch tsconfig.json dist/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "GIID"
-  },
-  "keywords": [
-    "discord"
-  ],
-  "author": "mattsivak",
-  "license": "ISC",
-  "dependencies": {
-    "@discordjs/builders": "^0.9.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.25.2",
-    "discord.js": "^13.3.1"
+    "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
+    "build:tailwind": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/index.css",
+    "build": "npm run build:tailwind && rollup -c",
+    "start": "sirv public",
+    "serve": "serve public -p 80",
+    "dev": "concurrently \"rollup -c -w\" \"npm run watch:tailwind\"",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@types/node": "^16.11.12",
-    "typescript": "^4.5.2"
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "@tsconfig/svelte": "^2.0.0",
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "postcss-cli": "^9.0.2",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0",
+    "svelte-check": "^2.0.0",
+    "svelte-preprocess": "^4.0.0",
+    "tailwindcss": "^2.2.19",
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.0"
   }
 }
